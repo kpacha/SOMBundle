@@ -1,0 +1,23 @@
+{
+    "name": "kpacha/som-bundle",
+    "type": "symfony-bundle",
+    "description": "Success-O-Meter Bundle",
+    "keywords": ["analytics", "mongodb", "symfony"],
+    "homepage": "http://github.com/kpacha/SOM",
+    "license": "MIT",
+    "require": {
+        "php": "5.4.*",
+        "doctrine/mongodb-odm": "1.0.*@dev",
+        "doctrine/mongodb-odm-bundle": "3.0.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kpacha\\SOMBundle": ""
+        }
+    },
+    "target-dir": "Kpacha/SOMBundle",
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin"
+    }
+}
