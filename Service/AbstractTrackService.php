@@ -24,6 +24,11 @@ abstract class AbstractTrackService
 
     public function track($clientIp, $queryString, $referer, $cookie)
     {
+        return $this->_track($clientIp, $queryString, $referer, $cookie);
+    }
+
+    protected function _track($clientIp, $queryString, $referer, $cookie)
+    {
         self::$_logger->debug("Creating a new raw track", func_get_args());
         $track = $this->createRawTrack($clientIp, $queryString, $referer, $cookie);
 
