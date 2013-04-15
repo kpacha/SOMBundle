@@ -25,6 +25,13 @@ class MongoTrackService extends AbstractTrackService
         $this->dm = $doctrineMongoManager->getManager();
     }
 
+    public function track($clientIp, $queryString, $referer, $cookie)
+    {
+        $rawTrack = parent::track($clientIp, $queryString, $referer, $cookie);
+        parent::process($rawTrack);
+        return $rawTrack;
+    }
+
     protected function _storeRawTrack(RawTrack $rawTrack)
     {
         
@@ -138,29 +145,3 @@ class MongoTrackService extends AbstractTrackService
     }
 
 }
-
-//{
-//	"_id" : ObjectId("515f1340de8c6ea4dbc6de75"),
-//	"name" : "som_manager",
-//	"url" : "http/dev.som.dla.corp/",
-//	"visitsLastDay" : [
-//		{
-//			"time" : 1365262053,
-//			"total" : 20,
-//			"visits" : [
-//				{
-//					"actionName" : "SOM+Manager+-+Dashboard",
-//					"total" : 5
-//				},
-//				{
-//					"actionName" : "SOM+Manager+-+Dashboard+-+som_manager",
-//					"total" : 15
-//				}
-//			]
-//		}
-//	],
-//	"visitsLastScan" : {
-//		"SOM+Manager+-+Dashboard" : 5,
-//		"SOM+Manager+-+Dashboard+-+som_manager" : 15
-//	}
-//}
