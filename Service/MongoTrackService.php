@@ -27,9 +27,8 @@ class MongoTrackService extends AbstractTrackService
 
     public function track($clientIp, $queryString, $referer, $cookie)
     {
-        $rawTrack = parent::track($clientIp, $queryString, $referer, $cookie);
-        parent::process($rawTrack);
-        return $rawTrack;
+        $rawTrack = $this->_track($clientIp, $queryString, $referer, $cookie);
+        return $this->process($rawTrack);
     }
 
     protected function _storeRawTrack(RawTrack $rawTrack)
